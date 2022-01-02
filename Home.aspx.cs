@@ -32,14 +32,13 @@ namespace ProyectoFinalDAM
         private void getListView()
         {
             MySqlConnection conc = con.Conectar();
-            command = new MySqlCommand("select id_incidencia, categoria, prioridad, estado, fch_actualizacion, motivo  from incidencia", conc);
+            command = new MySqlCommand("select id_incidencia, categoria, prioridad, estado, responsable, fch_actualizacion, motivo  from incidencia", conc);
             command.ExecuteNonQuery();
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
             da.Fill(dt);
             ListView1.DataSource = dt;
             ListView1.DataBind();
-
             command.Dispose();
             conc.Close();
         }

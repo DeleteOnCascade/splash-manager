@@ -31,6 +31,7 @@ namespace ProyectoFinalDAM
                 command.Parameters.AddWithValue("@password", tbPassword.Text.Trim());
                 
                 MySqlDataReader lee = command.ExecuteReader();
+
                 if (lee.Read())
                 {
                     conn.Close();

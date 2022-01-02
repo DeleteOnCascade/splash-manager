@@ -33,6 +33,42 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Label lbUsername;
 
         /// <summary>
+        /// btLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btLogout;
+
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
+        /// tbIncidencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbIncidencia;
+
+        /// <summary>
+        /// btBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btBuscar;
+
+        /// <summary>
         /// lb_IdIncidencia control.
         /// </summary>
         /// <remarks>
@@ -150,6 +186,51 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.TextBox tbDescripcion;
 
         /// <summary>
+        /// btCambiar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btCambiar;
+
+        /// <summary>
+        /// dropListEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListEstado;
+
+        /// <summary>
+        /// btAsignar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btAsignar;
+
+        /// <summary>
+        /// dropListAsignar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListAsignar;
+
+        /// <summary>
+        /// btEliminar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btEliminar;
+
+        /// <summary>
         /// ListView1 control.
         /// </summary>
         /// <remarks>
@@ -184,5 +265,14 @@ namespace ProyectoFinalDAM
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btAgregar;
+
+        /// <summary>
+        /// listViewHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView listViewHistorial;
     }
 }

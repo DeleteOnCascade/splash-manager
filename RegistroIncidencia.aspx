@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" href="/Style/EstiloGeneral.css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,8 +15,8 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
                 
-            <asp:Panel ID="Panel1" runat="server" style="height:auto">
-                <table>
+            <asp:Panel ID="Panel1" runat="server" style="height:auto" class="extender">
+                <table class="extender">
                     <tr><th></th> </tr>
                     <tr>
                         <th><asp:Label ID="lbCategoria" runat="server" Text="Categoria"></asp:Label></th>
