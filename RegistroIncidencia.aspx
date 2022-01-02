@@ -30,11 +30,11 @@
                         <th><asp:Label ID="lbPrioridad" runat="server" Text="Prioridad"></asp:Label></th>
                         <th> 
                             <asp:DropDownList ID="dropListPrioridad" runat="server" Rows="5" SelectionMode="Single">
-                                <asp:ListItem>Baja</asp:ListItem>
-                                <asp:ListItem>Media</asp:ListItem>
-                                <asp:ListItem>Alta</asp:ListItem>
-                                <asp:ListItem>Muy Alta</asp:ListItem>
-                                <asp:ListItem>Inmediata</asp:ListItem>
+                                <asp:ListItem>baja</asp:ListItem>
+                                <asp:ListItem>media</asp:ListItem>
+                                <asp:ListItem>alta</asp:ListItem>
+                                <asp:ListItem>muy alta</asp:ListItem>
+                                <asp:ListItem>inmediata</asp:ListItem>
                             </asp:DropDownList>
                         </th>
                     </tr>

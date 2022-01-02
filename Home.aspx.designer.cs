@@ -42,13 +42,13 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Button btLogout;
 
         /// <summary>
-        /// Panel1 control.
+        /// panelOpciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel panelOpciones;
 
         /// <summary>
         /// tbIncidencia control.
@@ -67,6 +67,51 @@ namespace ProyectoFinalDAM
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btBuscar;
+
+        /// <summary>
+        /// panelFiltros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelFiltros;
+
+        /// <summary>
+        /// dropListEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListEstado;
+
+        /// <summary>
+        /// dropListAsignar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListAsignar;
+
+        /// <summary>
+        /// dropListPrioridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListPrioridad;
+
+        /// <summary>
+        /// dropListCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropListCategoria;
 
         /// <summary>
         /// ListView1 control.
