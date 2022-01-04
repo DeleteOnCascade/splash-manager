@@ -33,13 +33,31 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Label lbUsername;
 
         /// <summary>
-        /// Panel1 control.
+        /// panelOpciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel panelOpciones;
+
+        /// <summary>
+        /// tbIncidencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbIncidencia;
+
+        /// <summary>
+        /// btBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btBuscar;
 
         /// <summary>
         /// lbCategoria control.
@@ -78,6 +96,24 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.DropDownList dropListPrioridad;
 
         /// <summary>
+        /// btEnviar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btEnviar;
+
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
         /// lbMotivo control.
         /// </summary>
         /// <remarks>
@@ -112,15 +148,6 @@ namespace ProyectoFinalDAM
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescripcion;
-
-        /// <summary>
-        /// btEnviar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btEnviar;
 
         /// <summary>
         /// lbError control.

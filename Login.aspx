@@ -5,37 +5,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            height: 26px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-
-            <asp:Panel ID="Panel1" runat="server" Height="171px" style="margin-left: auto; margin-right:auto; background-color: #FFFFCC; border: thin double #808080" Width="543px" >
+            <asp:Panel ID="Panel1" runat="server" Height="270px" style="margin-left: auto; margin-right:auto; background-color: #FFFFCC; border: thin double #808080" Width="450px" >
                 <br />
-                <br />
+                <div style="width:fit-content">
+                    &nbsp;<img src="Resources/Images/SplashBT_Logo.png" alt="Splash Logo" style="margin-left:100px;"/></div>
                 <table style="position: relative; margin-left: auto; margin-right:auto;">
                     <tr>
-                        <th>Usuario</th>
-                        <th width ="100"></th>
-                        <th>Contraseña</th>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td class="auto-style1"><asp:TextBox ID="tbUsername" runat="server" placeholder="username"></asp:TextBox></td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style1"><asp:TextBox ID="tbPassword" runat="server" TextMode="Password" placeholder="password"></asp:TextBox></td>
+                        <td>Usuario:&nbsp;&nbsp;&nbsp;</td>
+                        <td><asp:TextBox ID="tbUsername" runat="server" placeholder="username"></asp:TextBox></td>
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp; &nbsp;</td>
+                        <td>Contraseña:&nbsp;&nbsp;&nbsp;</td>
+                        <td><asp:TextBox ID="tbPassword" runat="server" TextMode="Password" placeholder="password"></asp:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Button ID="btIngresar" runat="server" Text="INGRESAR" OnClick="btIngresar_Click" Width="116px"/></td>
-                        <td></td>
+                        <td><asp:Button ID="btIngresar" runat="server" Text="INGRESAR" OnClick="Entrar" Width="116px"/></td>
                     </tr>
                     <tr>
                         <td>
@@ -43,10 +39,7 @@
                         </td>
                     </tr>
                 </table>
-                <br />
-                <br />
             </asp:Panel>
-
         </div>
     </form>
 </body>

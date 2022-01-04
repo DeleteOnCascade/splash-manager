@@ -14,54 +14,58 @@
                 <asp:Label ID="lbUsername" runat="server" Text=""></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
-                
-            <asp:Panel ID="Panel1" runat="server" style="height:auto" class="extender">
-                <table class="extender">
-                    <tr><th></th> </tr>
-                    <tr>
-                        <th><asp:Label ID="lbCategoria" runat="server" Text="Categoria"></asp:Label></th>
-                        <th><asp:DropDownList ID="dropListCategoria" runat="server" Rows="5" SelectionMode="Single">
+            <br />
+            <div class="extender" style="border:1px solid;">
+                <asp:Panel ID="panelOpciones" runat="server" Height="40px" style="background-color: #c8c8e8" class="extender">
+                    <table class="extender">
+                        <tr><th></th></tr><tr></tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th><a href="/Personal">Mi vista</a></th>
+                            <th>| &nbsp;&nbsp;</th>
+                            <th><a href="/Home">Ver incidencias</a></th>
+                            <th>| &nbsp;&nbsp;&nbsp;</th>
+                            <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
+                            <th width ="1000"></th>
+                            <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
+                            <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>
+                        </tr>
+                    </table>
+                </asp:Panel>
+            </div>
+            <br /><br />
+            <div class="extender" style="border:1px solid; padding-left:170px; background-color: #c8c8e8;"> <br />
+                <div style="display:inline-flex; ">
+                   <asp:Label ID="lbCategoria" runat="server" Text="Categoria"></asp:Label> &nbsp;&nbsp;&nbsp;
+                        <asp:DropDownList ID="dropListCategoria" runat="server" Rows="5" SelectionMode="Single">
                                 <asp:ListItem>Incidencia</asp:ListItem>
                                 <asp:ListItem>Petición</asp:ListItem>
-                            </asp:DropDownList></th>
-                    </tr>
-                    <tr><th></th> </tr>
-                    <tr>
-                        <th><asp:Label ID="lbPrioridad" runat="server" Text="Prioridad"></asp:Label></th>
-                        <th> 
-                            <asp:DropDownList ID="dropListPrioridad" runat="server" Rows="5" SelectionMode="Single">
-                                <asp:ListItem>baja</asp:ListItem>
-                                <asp:ListItem>media</asp:ListItem>
-                                <asp:ListItem>alta</asp:ListItem>
-                                <asp:ListItem>muy alta</asp:ListItem>
-                                <asp:ListItem>inmediata</asp:ListItem>
-                            </asp:DropDownList>
-                        </th>
-                    </tr>
-                    <tr><th></th> </tr>
+                        </asp:DropDownList>&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="lbPrioridad" runat="server" Text="Prioridad"></asp:Label>&nbsp;&nbsp;&nbsp;
+                    <asp:DropDownList ID="dropListPrioridad" runat="server" Rows="5" SelectionMode="Single">
+                        <asp:ListItem>baja</asp:ListItem>
+                        <asp:ListItem>media</asp:ListItem>
+                        <asp:ListItem>alta</asp:ListItem>
+                        <asp:ListItem>muy alta</asp:ListItem>
+                        <asp:ListItem>inmediata</asp:ListItem>
+                    </asp:DropDownList>&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btEnviar" runat="server" Text="Enviar reporte" Width="116px" OnClick="RegistrarIncidencia"/>
+                </div>
+               <br /> <br />
+            </div> <br />
+            <asp:Panel ID="Panel1" runat="server" style="height:auto" class="extender">
+                <table class="extender">
                     <tr>
                         <th><asp:Label ID="lbMotivo" runat="server" Text="Resumen"></asp:Label></th>
-                        <th><asp:TextBox ID="tbMotivo" runat="server" Width="851px"></asp:TextBox></th>
+                        <td><asp:TextBox ID="tbMotivo" runat="server" Width="851px"></asp:TextBox></td>
                     </tr>
-                    <tr><th></th> </tr>
                     <tr>
                         <th><asp:Label ID="lbDescripcion" runat="server" Text="Descripción"></asp:Label></th>
-                        <th><asp:TextBox ID="tbDescripcion" runat="server" Height="149px" TextMode="MultiLine" Width="848px"></asp:TextBox></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th><asp:Button ID="btEnviar" runat="server" Text="Enviar reporte" Width="116px" OnClick="btEnviar_Click"/></th>
-                    </tr>
-                    <tr><th></th> </tr>
-                    <tr><th></th> </tr>
-                    <tr>
-                        <td>
-                            <asp:Label ID="lbError" runat="server" Text="Error" Visible="False" ForeColor="Red"></asp:Label>
-                        </td>
+                        <td><asp:TextBox ID="tbDescripcion" runat="server" Height="149px" TextMode="MultiLine" Width="848px"></asp:TextBox></td>
                     </tr>
                 </table>
             </asp:Panel>
-            
+            <asp:Label ID="lbError" runat="server" Text="Error" Visible="False" ForeColor="Red"></asp:Label>
         </div>
     </form>
 </body>

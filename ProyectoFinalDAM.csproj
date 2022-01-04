@@ -134,6 +134,7 @@
     <Content Include="Login.aspx" />
     <Content Include="RegistroIncidencia.aspx" />
     <Content Include="Resources\Images\search_icon.png" />
+    <Content Include="Resources\Images\SplashBT_Logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

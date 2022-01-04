@@ -72,7 +72,7 @@ namespace ProyectoFinalDAM
         protected void CargarUsuarios()
         {
             MySqlConnection conc = con.Conectar();
-            command = new MySqlCommand("select username from usuario", conc);
+            command = new MySqlCommand("SELECT username FROM usuario WHERE username != 'cualquiera'", conc);
             dropListAsignar.DataSource = command.ExecuteReader();
             dropListAsignar.DataValueField = "username";
             dropListAsignar.DataBind();
@@ -144,6 +144,7 @@ namespace ProyectoFinalDAM
             int n = cmd.ExecuteNonQuery();
 
             InsertaEnHistorial(0);
+            ActualizaFchIncidencia();
 
             if (n>0)
             {
@@ -165,6 +166,7 @@ namespace ProyectoFinalDAM
             cmd.ExecuteNonQuery();
 
             InsertaEnHistorial(1);
+            ActualizaFchIncidencia();
 
             Response.Redirect("DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
             cmd.Dispose();
@@ -192,8 +194,21 @@ namespace ProyectoFinalDAM
             }
 
             InsertaEnHistorial(2);
+            ActualizaFchIncidencia();
 
             Response.Redirect("DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
+            cmd.Dispose();
+            conn.Close();
+        }
+
+        protected void ActualizaFchIncidencia()
+        {
+            string query = "UPDATE incidencia SET fch_actualizacion = @fch_actualizacion WHERE id_incidencia = @id_incidencia";
+            MySqlConnection conn = con.Conectar();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@fch_actualizacion", DateTime.Now);
+            cmd.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+            cmd.ExecuteNonQuery();
             cmd.Dispose();
             conn.Close();
         }

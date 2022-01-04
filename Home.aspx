@@ -9,15 +9,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="lbUsername" runat="server" Text=""></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btLogout" runat="server" Text="SALIR" OnClick="Salir" />
+        <div class="extender" style="display:inline-flex;">
+            <img src="Resources/Images/SplashBT_Logo.png" alt="Splash Logo"/>
+            <div class="extender" style="float:right; text-align:right">
+                <asp:Label ID="lbUsername" runat="server" Text=""></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btLogout" runat="server" Text="SALIR" OnClick="Salir" />
+            </div>
         </div>
         <br />
         <div class="extender" style="border:1px solid;">
             <asp:Panel ID="panelOpciones" runat="server" Height="40px" style="background-color: #c8c8e8" class="extender">
                 <table class="extender">
+                    <tr><th></th></tr><tr></tr>
                     <tr>
                         <th>&nbsp;</th>
                         <th><a href="/Personal">Mi vista</a></th>
@@ -34,7 +38,7 @@
         </div>
         <br /><br />
 
-        <div class="extender" style="border:1px solid; padding-left:10px;  background-color: #c8c8e8;">
+        <div class="extender" style="border:1px solid; padding-left:10px; margin-right:20px; background-color: #c8c8e8;">
                 <h4>Filtrar: </h4>
                 <div style="display:inline-flex;">
                     <asp:Panel ID="panelFiltros" runat="server" style="height: fit-content; width: fit-content;" class="extender">
@@ -79,7 +83,18 @@
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <div class="extender">
+        <div class="extender" style="border:1px solid; padding-left:10px; margin-right:20px; background-color: #c8c8e8;">
+                <div style="display:inline-flex;">
+                    <asp:Panel ID="panel1" runat="server" style="height: fit-content; width: fit-content;" class="extender">
+                        <asp:Label runat="server">Mostrando incidencias&nbsp;</asp:Label>
+                        <asp:Label runat="server" Text="" ID="lbNumIncidencias"></asp:Label>
+                    </asp:Panel>
+                </div>
+               <br />
+            </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <div class="extender" style="border:1px solid">
             <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
                 <LayoutTemplate>
                     <table class="extender">

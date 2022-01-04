@@ -2,10 +2,11 @@
 html, body {
     padding-left: 0;
     padding-right: 40px;
-    width: 100%;
+    width: 99%;
     height: 100%;
     font-family: Arial;
     font-size: 95%;
+    overflow-x: hidden;
 }
 
 td {
@@ -28,7 +29,7 @@ th {
 
 .extender {
     border-style: none;
-    width: 100%;
+    width: 99%;
     padding-left: 0;
     padding-right: 20px;
 }
@@ -37,18 +38,23 @@ th {
 .nueva {
     background-color: #fcbdbd;
 }
+
 .aceptada {
     background-color: #fff494;
 }
+
 .asignada {
     background-color: #c8e1e8;
 }
+
 .feedback {
     background-color: #fcdcbd;
 }
+
 .resuelta {
     background-color: #d2f5b0;
 }
+
 .cerrada {
     background-color: #c1c1c1;
 }

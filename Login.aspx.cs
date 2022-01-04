@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ProyectoFinalDAM
 {
@@ -19,7 +21,7 @@ namespace ProyectoFinalDAM
 
         }
 
-        protected void btIngresar_Click(object sender, EventArgs e)
+        protected void Entrar(object sender, EventArgs e)
         {
             try
             {
@@ -49,6 +51,17 @@ namespace ProyectoFinalDAM
                 lbError.Text = ex.Message;
                 lbError.Visible=true;
             }
+        }
+
+        protected string encriptar(string pwd)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha256.ComputeHash(encoding.GetBytes(pwd));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
         }
     }
 }

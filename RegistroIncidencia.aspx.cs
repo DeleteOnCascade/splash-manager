@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace ProyectoFinalDAM
 {
@@ -21,7 +22,7 @@ namespace ProyectoFinalDAM
         Conexion con = new Conexion();
         MySqlCommand command;
 
-        protected void btEnviar_Click(object sender, EventArgs e)
+        protected void RegistrarIncidencia(object sender, EventArgs e)
         {
             try
             {
@@ -41,6 +42,8 @@ namespace ProyectoFinalDAM
 
                 int n = command.ExecuteNonQuery();
 
+                InsertarHistorial(conn);
+
                 if (n>0)
                 {
                     Response.Redirect("Home.aspx");
@@ -55,6 +58,32 @@ namespace ProyectoFinalDAM
                 lbError.Text = ex.Message;
                 lbError.Visible=true;
             }
+        }
+
+        protected void InsertarHistorial(MySqlConnection conn)
+        {
+            string query = "SELECT * FROM incidencia WHERE id_incidencia = (SELECT MAX(id_incidencia) FROM incidencia)";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            int id_incidencia = (int)cmd.ExecuteScalar();
+
+
+            cmd = new MySqlCommand(query, conn);
+            query = "INSERT INTO historial (fch_modificado,usuario,campo,cambio,id_incidencia) " +
+            "VALUES (@fch_modificado,@usuario,@campo,@cambio,@id_incidencia)";
+
+            cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@fch_modificado", DateTime.Now);
+            cmd.Parameters.AddWithValue("@usuario", Session["username"]);
+            cmd.Parameters.AddWithValue("@campo", "Nueva Incidencia");
+            cmd.Parameters.AddWithValue("@cambio", "");
+            cmd.Parameters.AddWithValue("@id_incidencia", id_incidencia);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+        }
+
+        protected void BuscarIncidencia(object sender, EventArgs e)
+        {
+            Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
     }
 }

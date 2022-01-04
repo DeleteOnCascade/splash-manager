@@ -118,6 +118,20 @@ namespace ProyectoFinalDAM
             Response.Redirect("Home.aspx");
         }
 
+        //no funciona
+        protected void CargarNumIncidencias()
+        {
+            MySqlConnection conc = con.Conectar();
+            command = new MySqlCommand("COUNT id_incidencia FROM incidencia", conc);
+            command.ExecuteNonQuery();
+            dt = new DataTable();
+            da = new MySqlDataAdapter(command);
+            da.Fill(dt);
+            
+            command.Dispose();
+            conc.Close();
+        }
+
         protected void Salir(object sender, EventArgs e)
         {
             Session.Abandon();

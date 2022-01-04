@@ -19,6 +19,7 @@
         <div class="extender">
             <asp:Panel ID="Panel1" runat="server" Height="40px" style="border: thin double #808080; background-color: #c8c8e8" class="extender">
                 <table class="extender">
+                    <tr><th></th></tr><tr></tr>
                     <tr>
                         <th>&nbsp;</th>
                         <th><a href="/Personal">Mi vista</a></th>
