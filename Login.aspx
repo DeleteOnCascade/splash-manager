@@ -25,6 +25,7 @@
                     <tr>
                         <td>Contraseña:&nbsp;&nbsp;&nbsp;</td>
                         <td><asp:TextBox ID="tbPassword" runat="server" TextMode="Password" placeholder="password"></asp:TextBox></td>
+                        <td><asp:ImageButton id="btVer" runat="server" ImageUrl="Resources/Images/ojo_cerrado.png" OnClick="CambiarVisibilidad"/></td>
                     </tr>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;</td>

@@ -29,7 +29,9 @@
                         <th><a href="/Home">Ver incidencias</a></th>
                         <th>| &nbsp;&nbsp;&nbsp;</th>
                         <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
-                        <th width ="1000"></th>
+                        <th>| &nbsp;&nbsp;&nbsp;</th>
+                        <th><a href="/Registro">Registrar usuario</a></th>
+                        <th width ="900"></th>
                         <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
                         <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>
                     </tr>

@@ -6,8 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace ProyectoFinalDAM
 {
@@ -30,7 +28,7 @@ namespace ProyectoFinalDAM
                 string query = "SELECT * FROM usuario WHERE username = @username AND password = @password ";
                 command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@username", tbUsername.Text.Trim());
-                command.Parameters.AddWithValue("@password", tbPassword.Text.Trim());
+                command.Parameters.AddWithValue("@password", Encrypt.Encriptar(tbPassword.Text.Trim()));
                 
                 MySqlDataReader lee = command.ExecuteReader();
 
@@ -53,15 +51,19 @@ namespace ProyectoFinalDAM
             }
         }
 
-        protected string encriptar(string pwd)
+        protected void CambiarVisibilidad(object sender, ImageClickEventArgs e)
         {
-            SHA256 sha256 = SHA256Managed.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = sha256.ComputeHash(encoding.GetBytes(pwd));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
+            if (btVer.ImageUrl.Equals("Resources/Images/ojo_cerrado.png"))
+            {
+                tbPassword.TextMode = TextBoxMode.SingleLine;
+                btVer.ImageUrl = "Resources/Images/ojo_abierto.png";
+            }
+            else
+            {
+                tbPassword.TextMode = TextBoxMode.Password;
+                btVer.ImageUrl = "Resources/Images/ojo_cerrado.png";
+            }
         }
+    
     }
 }
