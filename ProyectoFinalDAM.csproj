@@ -119,6 +119,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="DetalleIncidencia.aspx" />
+    <Content Include="DetalleNota.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="DetalleIncidencia.aspx.designer.cs">
       <DependentUpon>DetalleIncidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleNota.aspx.cs">
+      <DependentUpon>DetalleNota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleNota.aspx.designer.cs">
+      <DependentUpon>DetalleNota.aspx</DependentUpon>
     </Compile>
     <Compile Include="Encrypt.cs" />
     <Compile Include="Global.asax.cs">

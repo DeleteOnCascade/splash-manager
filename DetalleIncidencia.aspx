@@ -98,7 +98,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <div class="extender">
-                <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
+                <asp:ListView ID="lvNota" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
                     <LayoutTemplate>
                         <table class="extender">
                             <tr style="margin-right:auto; width: fit-content">
@@ -114,12 +114,14 @@
                         </tr>
                     </GroupTemplate>
                     <ItemTemplate>
-                        <th><small>(<%# Eval("ID_NOTA")%>)&nbsp;&nbsp;
-                             <%# Eval("USUARIO")%>&nbsp;&nbsp;
-                             <%# Eval("FCH_CREACION")%></small>
+                        <th>
+                            <small>
+                                <a href="/DetalleNota.aspx?id=<%# Eval("ID_NOTA")%>"><%# Eval("ID_NOTA")%></a>&nbsp;
+                                <%# Eval("USUARIO")%>&nbsp;&nbsp;
+                                <%# Eval("FCH_CREACION")%>
+                            </small><br />
                         </th>
-                        <td><%# Eval("DSC_NOTA")%></td>
-                        
+                        <td>&nbsp;<%# Eval("DSC_NOTA")%></td>
                     </ItemTemplate>
                 </asp:ListView>
             </div>

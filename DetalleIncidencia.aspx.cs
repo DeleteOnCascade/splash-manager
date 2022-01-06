@@ -66,8 +66,8 @@ namespace ProyectoFinalDAM
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
             da.Fill(dt);
-            ListView1.DataSource = dt;
-            ListView1.DataBind();
+            lvNota.DataSource = dt;
+            lvNota.DataBind();
 
 
             command.Dispose();
@@ -130,7 +130,6 @@ namespace ProyectoFinalDAM
                     case DialogResult.No:
                         break;
                 }
-
             }
 
         protected void AgregarNota(object sender, EventArgs e)
@@ -278,5 +277,6 @@ namespace ProyectoFinalDAM
         {
             Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
+
     }
 }
