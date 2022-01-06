@@ -22,6 +22,9 @@ namespace ProyectoFinalDAM
         {
             if (Session["username"]==null)
                 Response.Redirect("Login.aspx");
+            if((int)Session["rol"] == 2)
+                Response.Redirect("UsuarioIncidencia.aspx");
+
             lbUsername.Text = "Usuario: " + Session["username"];
 
             if (!this.IsPostBack)

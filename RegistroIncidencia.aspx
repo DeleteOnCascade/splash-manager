@@ -21,10 +21,8 @@
                         <tr><th></th></tr><tr></tr>
                         <tr>
                             <th>&nbsp;</th>
-                            <th><a href="/Personal">Mi vista</a></th>
+                            <th><a href="/UsuarioIncidencia">Mis incidencias</a></th>
                             <th>| &nbsp;&nbsp;</th>
-                            <th><a href="/Home">Ver incidencias</a></th>
-                            <th>| &nbsp;&nbsp;&nbsp;</th>
                             <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
                             <th width ="1000"></th>
                             <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>

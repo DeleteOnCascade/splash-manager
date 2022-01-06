@@ -31,6 +31,11 @@ namespace ProyectoFinalDAM
                 this.GetHistorial();
                 this.CargarUsuarios();
             }
+            if (((int)Session["rol"] == 2))
+            {
+                btAsignar.Enabled = false;
+                dropListAsignar.Enabled = false;
+            }
         }
 
         private void GetIncidencia()

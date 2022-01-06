@@ -46,7 +46,7 @@ namespace ProyectoFinalDAM
 
                 if (n>0)
                 {
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("UsuarioIncidencia.aspx");
                     command.Dispose();
                     conn.Close();
                 }

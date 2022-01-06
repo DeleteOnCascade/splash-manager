@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="CambiarPWD.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -132,6 +133,8 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="UsuarioIncidencia.aspx" />
+    <Content Include="MiVista.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="RegistroIncidencia.aspx" />
     <Content Include="Resources\Images\ojo_abierto.png" />
@@ -183,6 +186,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CambiarPWD.aspx.cs">
+      <DependentUpon>CambiarPWD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarPWD.aspx.designer.cs">
+      <DependentUpon>CambiarPWD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -222,6 +232,20 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioIncidencia.aspx.cs">
+      <DependentUpon>UsuarioIncidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioIncidencia.aspx.designer.cs">
+      <DependentUpon>UsuarioIncidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MiVista.aspx.cs">
+      <DependentUpon>MiVista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiVista.aspx.designer.cs">
+      <DependentUpon>MiVista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">

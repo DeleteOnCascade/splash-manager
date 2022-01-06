@@ -24,11 +24,9 @@
                     <tr><th></th></tr><tr></tr>
                     <tr>
                         <th>&nbsp;</th>
-                        <th><a href="/Personal">Mi vista</a></th>
+                        <th><a href="/MiVista">Mi vista</a></th>
                         <th>| &nbsp;&nbsp;</th>
                         <th><a href="/Home">Ver incidencias</a></th>
-                        <th>| &nbsp;&nbsp;&nbsp;</th>
-                        <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
                         <th>| &nbsp;&nbsp;&nbsp;</th>
                         <th><a href="/Registro">Registrar usuario</a></th>
                         <th width ="900"></th>

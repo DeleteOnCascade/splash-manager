@@ -24,8 +24,7 @@ namespace ProyectoFinalDAM
             try
             {
                 MySqlConnection conn = con.Conectar();
-                
-                string query = "SELECT * FROM usuario WHERE username = @username AND password = @password ";
+                string query = "SELECT rol FROM usuario WHERE username = @username AND password = @password";
                 command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@username", tbUsername.Text.Trim());
                 command.Parameters.AddWithValue("@password", Encrypt.Encriptar(tbPassword.Text.Trim()));
@@ -34,9 +33,13 @@ namespace ProyectoFinalDAM
 
                 if (lee.Read())
                 {
-                    conn.Close();
+                    lee.Close();
                     Session["username"] = tbUsername.Text.Trim();
-                    Response.Redirect("~/Home.aspx");
+                    if (GetRol(command)==1)
+                        Response.Redirect("~/Home.aspx");
+                    else if (GetRol(command)==2)
+                        Response.Redirect("~/UsuarioIncidencia.aspx");
+                    conn.Close();
                 }
                 else
                 {
@@ -64,6 +67,13 @@ namespace ProyectoFinalDAM
                 btVer.ImageUrl = "Resources/Images/ojo_cerrado.png";
             }
         }
-    
+
+        protected int GetRol(MySqlCommand command)
+        {
+            MySqlConnection conn = con.Conectar();
+            int rol = (int)command.ExecuteScalar();
+            Session["rol"] = rol;
+            return rol;
+        }
     }
 }

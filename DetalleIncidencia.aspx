@@ -22,7 +22,7 @@
                     <tr><th></th></tr><tr></tr>
                     <tr>
                         <th>&nbsp;</th>
-                        <th><a href="/Personal">Mi vista</a></th>
+                        <th><a href="/MiVista">Mi vista</a></th>
                         <th>| &nbsp;&nbsp;</th>
                         <th><a href="/Home">Ver incidencias</a></th>
                         <th>| &nbsp;&nbsp;&nbsp;</th>
@@ -114,9 +114,9 @@
                         </tr>
                     </GroupTemplate>
                     <ItemTemplate>
-                        <th>(<%# Eval("ID_NOTA")%>) 
-                             <%# Eval("USUARIO")%>
-                             <%# Eval("FCH_CREACION")%>
+                        <th><small>(<%# Eval("ID_NOTA")%>)&nbsp;&nbsp;
+                             <%# Eval("USUARIO")%>&nbsp;&nbsp;
+                             <%# Eval("FCH_CREACION")%></small>
                         </th>
                         <td><%# Eval("DSC_NOTA")%></td>
                         
