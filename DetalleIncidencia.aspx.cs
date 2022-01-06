@@ -77,7 +77,7 @@ namespace ProyectoFinalDAM
         protected void CargarUsuarios()
         {
             MySqlConnection conc = con.Conectar();
-            command = new MySqlCommand("SELECT username FROM usuario WHERE username != 'cualquiera'", conc);
+            command = new MySqlCommand("SELECT username FROM usuario WHERE username != 'cualquiera' AND rol = '1'", conc);
             dropListAsignar.DataSource = command.ExecuteReader();
             dropListAsignar.DataValueField = "username";
             dropListAsignar.DataBind();

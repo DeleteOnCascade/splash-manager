@@ -31,6 +31,7 @@ namespace ProyectoFinalDAM
             {
                 this.getListView();
                 this.CargarUsuarios();
+                this.CargarNumIncidencias();
             }
         }
 
@@ -38,7 +39,7 @@ namespace ProyectoFinalDAM
         {
             MySqlConnection conc = con.Conectar();
             command = new MySqlCommand("SELECT id_incidencia, categoria, prioridad, estado, responsable, fch_actualizacion, motivo  FROM incidencia " +
-                "WHERE estado != 'cerrada' ORDER BY fch_actualizacion DESC", conc);
+                "WHERE estado != 'cerrada' ORDER BY fch_actualizacion DESC LIMIT 20", conc);
             command.ExecuteNonQuery();
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
@@ -52,7 +53,7 @@ namespace ProyectoFinalDAM
         protected void CargarUsuarios()
         {
             MySqlConnection conc = con.Conectar();
-            command = new MySqlCommand("select username from usuario", conc);
+            command = new MySqlCommand("SELECT username FROM usuario WHERE rol = '1'", conc);
             dropListAsignar.DataSource = command.ExecuteReader();
             dropListAsignar.DataValueField = "username";
             dropListAsignar.DataBind();
@@ -121,18 +122,34 @@ namespace ProyectoFinalDAM
             Response.Redirect("Home.aspx");
         }
 
-        //no funciona
         protected void CargarNumIncidencias()
         {
             MySqlConnection conc = con.Conectar();
-            command = new MySqlCommand("COUNT id_incidencia FROM incidencia", conc);
-            command.ExecuteNonQuery();
-            dt = new DataTable();
-            da = new MySqlDataAdapter(command);
-            da.Fill(dt);
-            
+            command = new MySqlCommand("SELECT COUNT(*) As Count FROM incidencia", conc);
+            object o = command.ExecuteScalar();
+            lbNumIncidencias.Text = "(1 - 20 / " + o.ToString() + ")";
             command.Dispose();
             conc.Close();
+        }
+
+        protected void VerPrimera(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void VerAnterior(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void VerSiguiente(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void VerUltima(object sender, EventArgs e)
+        {
+
         }
 
         protected void Salir(object sender, EventArgs e)

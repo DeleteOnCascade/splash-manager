@@ -25,9 +25,7 @@
                         <th><a href="/MiVista">Mi vista</a></th>
                         <th>| &nbsp;&nbsp;</th>
                         <th><a href="/Home">Ver incidencias</a></th>
-                        <th>| &nbsp;&nbsp;&nbsp;</th>
-                        <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
-                        <th width ="1000"></th>
+                        <th width ="1200"></th>
                         <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
                         <th><asp:Button ID="btBuscar" runat="server" Text="BUSCAR" Width="116px" OnClick="BuscarIncidencia"/></th>
                     </tr>

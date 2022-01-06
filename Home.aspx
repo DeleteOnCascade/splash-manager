@@ -29,7 +29,7 @@
                         <th><a href="/Home">Ver incidencias</a></th>
                         <th>| &nbsp;&nbsp;&nbsp;</th>
                         <th><a href="/Registro">Registrar usuario</a></th>
-                        <th width ="900"></th>
+                        <th width ="1000"></th>
                         <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
                         <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>
                     </tr>
@@ -83,12 +83,18 @@
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <div class="extender" style="border:1px solid; padding-left:10px; margin-right:20px; background-color: #c8c8e8;">
+        <div class="extender" style="border:1px solid; padding-left:10px; margin-right:30px; background-color: #c8c8e8; height:30px">
                 <div style="display:inline-flex;">
-                    <asp:Panel ID="panel1" runat="server" style="height: fit-content; width: fit-content;" class="extender">
-                        <asp:Label runat="server">Mostrando incidencias&nbsp;</asp:Label>
-                        <asp:Label runat="server" Text="" ID="lbNumIncidencias"></asp:Label>
+                    <asp:Panel ID="panel1" runat="server" style="height: fit-content; width: fit-content; margin-top:7px" class="extender">
+                        <asp:Label runat="server" Font-Bold="True">Mostrando incidencias&nbsp;</asp:Label>
+                        <asp:Label runat="server" Text="" ID="lbNumIncidencias" Font-Bold="True"></asp:Label>
                     </asp:Panel>
+                </div>
+                <div class="" style="width:fit-content; text-align:right; float:right; margin-top:0.2%">
+                    <asp:Button ID="btPrimero" runat="server" Text="<<" OnClick="VerPrimera"/>&nbsp;
+                    <asp:Button ID="btAtras" runat="server" Text="<" OnClick="VerAnterior"/>&nbsp;
+                    <asp:Button ID="btSiguiente" runat="server" Text=">" OnClick="VerSiguiente"/>&nbsp;
+                    <asp:Button ID="btUltimo" runat="server" Text=">>" OnClick="VerUltima"/>
                 </div>
                <br />
             </div>
@@ -98,7 +104,7 @@
             <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
                 <LayoutTemplate>
                     <table class="extender">
-                        <tr style="background-color: lightsteelblue; margin-right:auto; width: fit-content;">
+                        <tr style="background-color: lightsteelblue;">
                             <th>ID</th>
                             <th>Categoría</th>
                             <th>Prioridad</th>
@@ -123,6 +129,7 @@
                         <td class="<%# Eval("ESTADO")%>">&nbsp;<%# Eval("MOTIVO")%></td>
                 </ItemTemplate>
             </asp:ListView>
+            <br />
         </div>
     </form>
 </body>

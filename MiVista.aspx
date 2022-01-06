@@ -20,7 +20,7 @@
             </div>
             <br />
             <div class="extender" style="border:1px solid;">
-                <asp:Panel ID="panelOpciones" runat="server" Height="40px" style="background-color: #c8c8e8" class="extender">
+                <asp:Panel class="extender" ID="panelOpciones" runat="server" Height="40px " style="background-color: #c8c8e8" >
                     <table class="extender">
                         <tr><th></th></tr><tr></tr>
                         <tr>
@@ -28,11 +28,7 @@
                             <th><a href="/MiVista">Mi vista</a></th>
                             <th>| &nbsp;&nbsp;</th>
                             <th><a href="/Home">Ver incidencias</a></th>
-                            <th>| &nbsp;&nbsp;&nbsp;</th>
-                            <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
-                            <th>| &nbsp;&nbsp;&nbsp;</th>
-                            <th><a href="/Registro">Registrar usuario</a></th>
-                            <th width ="900"></th>
+                            <th width ="1200"></th>
                             <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
                             <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>
                         </tr>
@@ -46,7 +42,7 @@
                 <asp:ListView ID="listViewIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
                     <LayoutTemplate>
                         <table class="extender">
-                            <tr style="background-color: lightsteelblue; margin-right:auto; width: fit-content;">
+                            <tr style="background-color: lightsteelblue;">
                                 <th>ID</th>
                                 <th>Categoría</th>
                                 <th>Prioridad</th>
