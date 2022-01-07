@@ -19,7 +19,7 @@
         <div class="extender">
             <asp:Panel ID="Panel1" runat="server" Height="40px" style="border: thin double #808080; background-color: #c8c8e8" class="extender">
                 <table class="extender">
-                    <tr><th></th></tr><tr></tr>
+                    <tr><th></th></tr>
                     <tr>
                         <th>&nbsp;</th>
                         <th><a href="/MiVista">Mi vista</a></th>
@@ -52,6 +52,7 @@
                         <th><asp:Label ID="lbFechaActualizacion" runat="server" Text=""></asp:Label></th>
                         <th><asp:Label ID="lbProyecto" runat="server" Text=""></asp:Label></th>
                         <th><asp:Label ID="lbFechaCreacion" runat="server" Text=""></asp:Label></th>
+                        <th></th>
                     </tr>
                 </table>
             </div>
@@ -89,8 +90,25 @@
                     <asp:Button ID="btAsignar" runat="server" Text="Asignar a:" OnClick="AsignarIncidencia" /> &nbsp;
                     <asp:DropDownList ID="dropListAsignar" runat="server" SelectionMode="Single"/> &nbsp; &nbsp; &nbsp;
                     <asp:Button ID="btEliminar" runat="server" Text="Eliminar Incidencia" OnClick="EliminarIncidencia" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="lbUpload" runat="server" Text="&nbsp;Adjuntar archivo: "></asp:Label>
+                    &nbsp;&nbsp;
+                    <asp:FileUpload ID="fuArchivo" runat="server" />&nbsp;&nbsp;
+                    <asp:Button ID="btSubirArchivo" runat="server" Text="Subir archivo" OnClick="SubirArchivo" />
                 </div>
                <br /><br />
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <div class="extender" style="border:1px solid; padding-left:10px; padding-bottom: 20px">
+            <h4>Archivos: </h4>
+                <asp:Label ID="lbArchivo" runat="server" Text=""></asp:Label>
+                <asp:GridView ID="gridArchivos" runat="server" AutoGenerateColumns="False" CssClass="simple">
+                    <Columns>
+                        <asp:HyperLinkField DataNavigateUrlFields="nombre" DataNavigateUrlFormatString="~/Files/{0}" DataTextField="nombre" HeaderText="Archivos:" />
+                    </Columns>
+                </asp:GridView>
             </div>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -135,7 +153,6 @@
                     <tr>
                         <th></th>
                         <th><asp:Button ID="btAgregar" runat="server" Text="Agregar nota" Width="116px" OnClick="AgregarNota"/></th>
-                        <!--<th><input id="ckb_visibilidad" type="checkbox" /></th>-->
                     </tr>
                 </table>
             </div>

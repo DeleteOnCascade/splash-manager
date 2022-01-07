@@ -8,6 +8,7 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ProyectoFinalDAM
 {
@@ -23,13 +24,13 @@ namespace ProyectoFinalDAM
             if (Session["username"]==null)
                 Response.Redirect("Login.aspx");
             lbUsername.Text = "Usuario: " + Session["username"];
-
             if (!this.IsPostBack)
             {
                 lb_IdIncidencia.Text = Request.QueryString["id"].ToString();
                 this.GetIncidencia();
                 this.GetHistorial();
                 this.CargarUsuarios();
+                this.CargarArchivos();               
             }
             if (((int)Session["rol"] == 2))
             {
@@ -58,8 +59,7 @@ namespace ProyectoFinalDAM
             lbFechaActualizacion.Text = "Fecha actualización: " + dt.Rows[0][8].ToString();
             lbProyecto.Text = "Proyecto: " + dt.Rows[0][9].ToString();
             lbFechaCreacion.Text = "Fecha de creación: " + dt.Rows[0][10].ToString();
-
-
+            lbEstado.CssClass = lbEstado.Text.Substring(8);
             command = new MySqlCommand("select * from nota where id_incidencia = @incidencia", conc);
             command.Parameters.AddWithValue("@incidencia", lb_IdIncidencia.Text);
             command.ExecuteNonQuery();
@@ -68,8 +68,6 @@ namespace ProyectoFinalDAM
             da.Fill(dt);
             lvNota.DataSource = dt;
             lvNota.DataBind();
-
-
             command.Dispose();
             conc.Close();
         }
@@ -188,7 +186,7 @@ namespace ProyectoFinalDAM
             cmd.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
             cmd.ExecuteNonQuery();
 
-            if (lbEstado.Text.Equals("nueva"))
+            if (lbEstado.Text.Substring(8).Equals("nueva"))
             {
                 query = "UPDATE incidencia SET estado = @estado WHERE id_incidencia = @id_incidencia";
                 cmd = new MySqlCommand(query, conn);
@@ -265,6 +263,98 @@ namespace ProyectoFinalDAM
             da.Fill(dt);
             listViewHistorial.DataSource = dt;
             listViewHistorial.DataBind();
+            command.Dispose();
+            conc.Close();
+        }
+
+        protected void SubirArchivo(object sender, EventArgs e)
+        {
+            string nombre = "";
+            string extension = "";
+            int size = 0;
+            int flag = 0;
+
+            if (fuArchivo.HasFile == true)
+            {
+                nombre = Path.GetFileNameWithoutExtension(fuArchivo.FileName);
+                extension = Path.GetExtension(fuArchivo.FileName);
+                size = fuArchivo.PostedFile.ContentLength;
+                switch (extension.ToLower())
+                {
+                    case ".doc":
+                    case ".docx":
+                    case ".pdf":
+                    case ".png":
+                    case ".jpg":
+                    case ".txt":
+                        flag = 1;
+                        break;
+                    default:
+                        flag= 0;
+                        break;
+                }
+                if(flag == 1)
+                {
+                    string query = "INSERT INTO archivo (id_archivo, nombre, id_incidencia) VALUES (id_archivo,@nombre,@id_incidencia)";
+
+                    MySqlConnection conn = con.Conectar();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@nombre", nombre+extension);
+                    cmd.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+                    int n = cmd.ExecuteNonQuery();
+                    if(n > 0)
+                    {
+                        MessageBox.Show("Archivo subido correctamente");
+                        cmd.Dispose();
+                        conn.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido subir el archivo");
+                    }
+
+                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+nombre+extension));
+                    ActualizaFchIncidencia();
+                    Response.Redirect("DetalleIncidencia.aspx?id=" + lb_IdIncidencia.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un archivo primero");
+            }
+
+        }
+
+        protected void CargarArchivos()
+        {
+            string query = "SELECT * FROM archivo WHERE id_incidencia = @incidencia";
+            MySqlConnection conc = con.Conectar();
+            MySqlCommand cmd = new MySqlCommand(query, conc);
+            cmd.Parameters.AddWithValue("@incidencia", lb_IdIncidencia.Text);
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            gridArchivos.DataSource = dt;
+            gridArchivos.DataBind();
+            cmd.Dispose();
+            conc.Close();    
+        }
+
+        protected void EliminarArchivo(object sender, EventArgs e)
+        {
+            string query = "DELETE archivo WHERE id_incidencia = @incidencia";
+            MySqlConnection conc = con.Conectar();
+            MySqlCommand cmd = new MySqlCommand(query, conc);
+            cmd.Parameters.AddWithValue("@incidencia", lb_IdIncidencia.Text);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conc.Close();
         }
 
         protected void SalirLogout(object sender, EventArgs e)

@@ -20,7 +20,8 @@
                     </tr>
                     <tr>
                         <td>Usuario:&nbsp;&nbsp;&nbsp;</td>
-                        <td><asp:TextBox ID="tbUsername" runat="server" placeholder="username"></asp:TextBox></td>
+                        <td>
+                            <asp:TextBox ID="tbUsername" runat="server" placeholder="username"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td>Contraseña:&nbsp;&nbsp;&nbsp;</td>

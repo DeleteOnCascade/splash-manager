@@ -231,6 +231,51 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Button btEliminar;
 
         /// <summary>
+        /// lbUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUpload;
+
+        /// <summary>
+        /// fuArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuArchivo;
+
+        /// <summary>
+        /// btSubirArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSubirArchivo;
+
+        /// <summary>
+        /// lbArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbArchivo;
+
+        /// <summary>
+        /// gridArchivos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridArchivos;
+
+        /// <summary>
         /// lvNota control.
         /// </summary>
         /// <remarks>

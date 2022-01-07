@@ -33,6 +33,11 @@ th {
     padding-left: 0;
 }
 
+.simple {
+    height: 10px;
+    background-color: white;
+}
+
 /*colores estado incidencias*/
 .nueva {
     background-color: #fcbdbd;
