@@ -230,8 +230,11 @@ namespace ProyectoFinalDAM
                     cambio = lbEstado.Text.Substring(7) + " => " + dropListEstado.SelectedItem.Text;
                     break;
                 case 2:
-                    cambio = lbResponsable.Text.Substring(12) + " => " + dropListAsignar.SelectedItem.Text;
                     campo = "Asignada a";
+                    cambio = lbResponsable.Text.Substring(12) + " => " + dropListAsignar.SelectedItem.Text;
+                    break;
+                case 3:
+                    campo = "Archivo adjuntado";
                     break;
             }
 
@@ -316,6 +319,7 @@ namespace ProyectoFinalDAM
 
                     fuArchivo.SaveAs(Server.MapPath("~/Files/"+nombre+extension));
                     ActualizaFchIncidencia();
+                    InsertaEnHistorial(3);
                     Response.Redirect("DetalleIncidencia.aspx?id=" + lb_IdIncidencia.Text);
                 }
                 else

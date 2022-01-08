@@ -65,6 +65,12 @@
             </asp:Panel>
             <asp:Label ID="lbError" runat="server" Text="Error" Visible="False" ForeColor="Red"></asp:Label>
         </div>
+        <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lbUpload" runat="server" Text="&nbsp;Adjuntar archivo: "></asp:Label>&nbsp;&nbsp;
+                <asp:FileUpload ID="fuArchivo" runat="server" />&nbsp;&nbsp;
+            <br /><br />
+        </div>
     </form>
 </body>
 </html>

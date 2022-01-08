@@ -65,7 +65,11 @@ namespace ProyectoFinalDAM
                         int n = cmd.ExecuteNonQuery();
 
                         if (n > 0)
+                        {
                             MessageBox.Show("NOTA BORRADA");
+                            InsertaEnHistorial(1);
+                        }
+                            
                         else
                             MessageBox.Show("NOTA NO BORRADA");
 
@@ -95,7 +99,10 @@ namespace ProyectoFinalDAM
                 int n = cmd.ExecuteNonQuery();
 
                 if (n > 0)
+                {
                     MessageBox.Show("Nota editada.");
+                    InsertaEnHistorial(0);
+                }
                 else
                     MessageBox.Show("Error al actualizar.");
 
@@ -106,6 +113,38 @@ namespace ProyectoFinalDAM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void InsertaEnHistorial(int opcion)
+        {
+            string campo = "";
+            string cambio = "";
+
+            switch (opcion)
+            {
+                case 0:
+                    campo = "Nota (" + lbIdNota.Text + ") editada";
+                    break;
+                case 1:
+                    campo = "Nota (" + lbIdNota.Text + ") eliminada";
+                    break;
+            }
+
+            string query = "INSERT INTO historial (fch_modificado,usuario,campo,cambio,id_incidencia) " +
+                "VALUES (@fch_modificado,@usuario,@campo,@cambio,@id_incidencia)";
+
+            MySqlConnection conn = con.Conectar();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@fch_modificado", DateTime.Now);
+            cmd.Parameters.AddWithValue("@usuario", Session["username"]);
+            cmd.Parameters.AddWithValue("@campo", campo);
+            cmd.Parameters.AddWithValue("@cambio", cambio);
+            cmd.Parameters.AddWithValue("@id_incidencia", lb_id_incidencia.Text.Substring(12));
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conn.Close();
         }
 
         protected void SalirLogout(object sender, EventArgs e)

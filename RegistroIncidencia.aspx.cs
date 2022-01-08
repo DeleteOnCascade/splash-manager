@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ProyectoFinalDAM
 {
@@ -39,10 +40,10 @@ namespace ProyectoFinalDAM
                 command.Parameters.AddWithValue("@informador", Session["username"].ToString());
                 command.Parameters.AddWithValue("@fecha_act", DateTime.Now);
                 command.Parameters.AddWithValue("@fch_creacion", DateTime.Now);
-
                 int n = command.ExecuteNonQuery();
 
                 InsertarHistorial(conn);
+                SubirArchivo();
 
                 if (n>0)
                 {
@@ -60,25 +61,89 @@ namespace ProyectoFinalDAM
             }
         }
 
-        protected void InsertarHistorial(MySqlConnection conn)
+        protected void SubirArchivo()
         {
+            string nombre = "";
+            string extension = "";
+            int size = 0;
+            int flag = 0;
+
+            if (fuArchivo.HasFile == true)
+            {
+                nombre = Path.GetFileNameWithoutExtension(fuArchivo.FileName);
+                extension = Path.GetExtension(fuArchivo.FileName);
+                size = fuArchivo.PostedFile.ContentLength;
+                switch (extension.ToLower())
+                {
+                    case ".doc":
+                    case ".docx":
+                    case ".pdf":
+                    case ".png":
+                    case ".jpg":
+                    case ".txt":
+                        flag = 1;
+                        break;
+                    default:
+                        flag= 0;
+                        break;
+                }
+                if (flag == 1)
+                {
+                    string query = "INSERT INTO archivo (id_archivo, nombre, id_incidencia) VALUES (id_archivo,@nombre,@id_incidencia)";
+                    MySqlConnection conn = con.Conectar();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nombre", nombre+extension);
+                    cmd.Parameters.AddWithValue("@id_incidencia", GetIncidencia());
+                    int n = cmd.ExecuteNonQuery();
+                    if (n > 0)
+                    {
+                        MessageBox.Show("Archivo subido correctamente");
+                        cmd.Dispose();
+                        conn.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido subir el archivo");
+                    }
+
+                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+nombre+extension));
+                }
+                else
+                {
+                    MessageBox.Show("Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un archivo primero");
+            }
+
+        }
+
+        protected int GetIncidencia()
+        {
+            MySqlConnection conn = con.Conectar();
             string query = "SELECT * FROM incidencia WHERE id_incidencia = (SELECT MAX(id_incidencia) FROM incidencia)";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             int id_incidencia = (int)cmd.ExecuteScalar();
+            cmd.Dispose();
+            conn.Close();
+            return id_incidencia;
+        }
 
-
-            cmd = new MySqlCommand(query, conn);
-            query = "INSERT INTO historial (fch_modificado,usuario,campo,cambio,id_incidencia) " +
+        protected void InsertarHistorial(MySqlConnection conn)
+        {
+            string query = "INSERT INTO historial (fch_modificado,usuario,campo,cambio,id_incidencia) " +
             "VALUES (@fch_modificado,@usuario,@campo,@cambio,@id_incidencia)";
-
-            cmd = new MySqlCommand(query, conn);
+            MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@fch_modificado", DateTime.Now);
             cmd.Parameters.AddWithValue("@usuario", Session["username"]);
             cmd.Parameters.AddWithValue("@campo", "Nueva Incidencia");
             cmd.Parameters.AddWithValue("@cambio", "");
-            cmd.Parameters.AddWithValue("@id_incidencia", id_incidencia);
+            cmd.Parameters.AddWithValue("@id_incidencia", GetIncidencia());
             cmd.ExecuteNonQuery();
             cmd.Dispose();
+            conn.Close();
         }
 
         protected void BuscarIncidencia(object sender, EventArgs e)
