@@ -107,6 +107,7 @@ namespace ProyectoFinalDAM
 
                             cmd_his.ExecuteNonQuery();
                             cmd_not.ExecuteNonQuery();
+                            EliminarArchivosIncidencia();
 
                             if (cmd_inc.ExecuteNonQuery() ==  1)
                                 MessageBox.Show("INCIDENCIA BORRADA");
@@ -319,8 +320,8 @@ namespace ProyectoFinalDAM
                     {
                         MessageBox.Show("No se ha podido subir el archivo");
                     }
-
-                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+nombre+extension));
+                    Directory.CreateDirectory(MapPath("~/Files/"+lb_IdIncidencia.Text));
+                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+lb_IdIncidencia.Text+"/"+nombre+extension));
                     ActualizaFchIncidencia();
                     InsertaEnHistorial(3);
                     Response.Redirect("DetalleIncidencia.aspx?id=" + lb_IdIncidencia.Text);
@@ -357,17 +358,50 @@ namespace ProyectoFinalDAM
         {
             int rowIndex = ((GridViewRow)(sender as System.Web.UI.Control).NamingContainer).RowIndex;
             int id_archivo = Convert.ToInt32(gridArchivos.Rows[rowIndex].Cells[0].Text);
-            string query = "DELETE FROM archivo WHERE id_archivo = @id_archivo";
+
             MySqlConnection conc = con.Conectar();
+            string query = "DELETE FROM archivo WHERE id_archivo = @id_archivo";
+            string nombre = gridArchivos.Rows[rowIndex].Cells[1].Text;
             MySqlCommand cmd = new MySqlCommand(query, conc);
             cmd.Parameters.AddWithValue("@id_archivo", id_archivo);
             cmd.ExecuteNonQuery();
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Archivo eliminado')", true);
+
+            string path = Server.MapPath("~/Files/"+lb_IdIncidencia.Text+nombre);
+            FileInfo file = new FileInfo(path);
+            if (file.Exists) 
+            {
+                file.Delete();
+            }
+
             InsertaEnHistorial(4);
             GetHistorial();
             CargarArchivos();
             cmd.Dispose();
             conc.Close();
+        }
+
+        protected void EliminarArchivosIncidencia()
+        {
+            MySqlConnection conn = con.Conectar();
+            string query = "DELETE FROM archivo WHERE id_incidencia = @id_incidencia";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conn.Close();
+
+            string path = Server.MapPath("~/Files/"+lb_IdIncidencia.Text);
+            BorrarDirectorio(path);
+        }
+
+        private void BorrarDirectorio(string path)
+        {
+            string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+            Directory.Delete(path);
         }
 
         protected void EliminarNota(object sender, EventArgs e)

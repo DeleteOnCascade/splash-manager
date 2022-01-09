@@ -49,7 +49,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Button ID="btIngresar" runat="server" Text="Registrar Usuario" OnClick="Registrar" Width="116px"/></td>
+                        <td><asp:Button ID="btRegistrar" runat="server" Text="Registrar Usuario" OnClick="Registrar" Width="116px"/></td>
+                        <td><asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="Volver" Width="100px"/></td>
                     </tr>
                 </table>
                 <div style="margin-left:15px; margin-top: 10px"><asp:Label ID="lbError" runat="server" Text="Error al registrar" Visible="False" ForeColor="Red"></asp:Label></div>

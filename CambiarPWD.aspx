@@ -42,6 +42,7 @@
                     <tr>
                         <td></td>
                         <td><asp:Button ID="btCambiar" runat="server" Text="Cambiar contraseña" OnClick="CambiarPassword" Width="140px"/></td>
+                        <td><asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="Volver" Width="100px"/></td>
                     </tr>
                 </table>
                 <div style="margin-left:15px; margin-top: 10px"><asp:Label ID="lbError" runat="server" Text="Error al actualizar" Visible="False" ForeColor="Red"></asp:Label></div>

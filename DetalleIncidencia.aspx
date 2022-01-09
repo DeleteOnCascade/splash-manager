@@ -22,12 +22,10 @@
                     <tr><th></th></tr>
                     <tr>
                         <th>&nbsp;</th>
-                        <th><a href="/MiVista">Mi vista</a></th>
-                        <th>| &nbsp;&nbsp;</th>
                         <th><a href="/Home">Ver incidencias</a></th>
                         <th width ="1200"></th>
                         <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
-                        <th><asp:Button ID="btBuscar" runat="server" Text="BUSCAR" Width="116px" OnClick="BuscarIncidencia"/></th>
+                        <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>
                     </tr>
                 </table>
             </asp:Panel>
@@ -107,10 +105,11 @@
                 <asp:GridView ID="gridArchivos" runat="server" AutoGenerateColumns="False" CssClass="simple">
                     <Columns>
                         <asp:BoundField DataField="id_archivo" HeaderText="ID" />
-                        <asp:HyperLinkField DataNavigateUrlFields="nombre" DataNavigateUrlFormatString="~/Files/{0}" DataTextField="nombre" HeaderText="Archivos:" />
+                        <asp:BoundField DataField="nombre" HeaderText="nombre"/>
+                        <asp:HyperLinkField DataNavigateUrlFields="nombre" DataNavigateUrlFormatString="~/Files/{0}" DataTextField="nombre" HeaderText="Archivo:" DataTextFormatString="Descargar" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnbt_delete" runat="server" OnClick="EliminarArchivo" OnClientClick="return confirm('¿Eliminar archivo?');">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="lnbt_delete" runat="server" OnClick="EliminarArchivo" OnClientClick="return confirm('¿Eliminar archivo?');">Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

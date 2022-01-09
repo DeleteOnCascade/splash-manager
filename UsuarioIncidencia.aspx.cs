@@ -52,7 +52,8 @@ namespace ProyectoFinalDAM
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
-            Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+            if (!tbIncidencia.Text.Equals(String.Empty))
+                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }  
     }
 }

@@ -102,5 +102,9 @@ namespace ProyectoFinalDAM
             return comprobado;
         }
 
+        protected void Volver(object sender, EventArgs e)
+        {
+            Response.Redirect("~/UsuarioIncidencia.aspx");
+        }
     }
 }

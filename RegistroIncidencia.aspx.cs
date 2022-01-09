@@ -105,8 +105,8 @@ namespace ProyectoFinalDAM
                     {
                         MessageBox.Show("No se ha podido subir el archivo");
                     }
-
-                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+nombre+extension));
+                    Directory.CreateDirectory(MapPath("~/Files/"+GetIncidencia()));
+                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+GetIncidencia()+"/"+nombre+extension));
                 }
                 else
                 {
@@ -148,7 +148,9 @@ namespace ProyectoFinalDAM
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
-            Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+            if (!tbIncidencia.Text.Equals(String.Empty))
+                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
+    
     }
 }

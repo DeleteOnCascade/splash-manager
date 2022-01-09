@@ -124,5 +124,11 @@ namespace ProyectoFinalDAM
                 btVerConf.ImageUrl = "Resources/Images/ojo_cerrado.png";
             }
         }
+    
+        protected void Volver(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+    
     }
 }
