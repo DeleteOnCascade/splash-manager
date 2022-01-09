@@ -8,6 +8,8 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.IO;
+using System.Text;
 
 namespace ProyectoFinalDAM
 {
@@ -44,8 +46,8 @@ namespace ProyectoFinalDAM
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
             da.Fill(dt);
-            ListView1.DataSource = dt;
-            ListView1.DataBind();
+            listIncidencias.DataSource = dt;
+            listIncidencias.DataBind();
             command.Dispose();
             conc.Close();
         }
@@ -82,8 +84,8 @@ namespace ProyectoFinalDAM
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
             da.Fill(dt);
-            ListView1.DataSource = dt;
-            ListView1.DataBind();
+            listIncidencias.DataSource = dt;
+            listIncidencias.DataBind();
             command.Dispose();
             conc.Close();
         }

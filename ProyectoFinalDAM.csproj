@@ -121,7 +121,6 @@
     <Content Include="DetalleIncidencia.aspx" />
     <Content Include="DetalleNota.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="Files\ejemplo.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -132,7 +131,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Files\anexo_i._plantilla_proyecto %281%29.doc" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
@@ -297,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -236,6 +236,9 @@ namespace ProyectoFinalDAM
                 case 3:
                     campo = "Archivo adjuntado";
                     break;
+                case 4:
+                    campo = "Archivo eliminado";
+                    break;
             }
 
             string query = "INSERT INTO historial (fch_modificado,usuario,campo,cambio,id_incidencia) " +
@@ -352,13 +355,24 @@ namespace ProyectoFinalDAM
 
         protected void EliminarArchivo(object sender, EventArgs e)
         {
-            string query = "DELETE archivo WHERE id_incidencia = @incidencia";
+            int rowIndex = ((GridViewRow)(sender as System.Web.UI.Control).NamingContainer).RowIndex;
+            int id_archivo = Convert.ToInt32(gridArchivos.Rows[rowIndex].Cells[0].Text);
+            string query = "DELETE FROM archivo WHERE id_archivo = @id_archivo";
             MySqlConnection conc = con.Conectar();
             MySqlCommand cmd = new MySqlCommand(query, conc);
-            cmd.Parameters.AddWithValue("@incidencia", lb_IdIncidencia.Text);
+            cmd.Parameters.AddWithValue("@id_archivo", id_archivo);
             cmd.ExecuteNonQuery();
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Archivo eliminado')", true);
+            InsertaEnHistorial(4);
+            GetHistorial();
+            CargarArchivos();
             cmd.Dispose();
             conc.Close();
+        }
+
+        protected void EliminarNota(object sender, EventArgs e)
+        {
+            
         }
 
         protected void SalirLogout(object sender, EventArgs e)
@@ -369,7 +383,10 @@ namespace ProyectoFinalDAM
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
-            Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+            if (!tbIncidencia.Text.Equals(String.Empty))
+            {
+                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+            }
         }
 
     }

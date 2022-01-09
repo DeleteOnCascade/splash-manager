@@ -101,7 +101,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <div class="extender" style="border:1px solid">
-            <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
+            <asp:ListView ID="listIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
                 <LayoutTemplate>
                     <table class="extender">
                         <tr style="background-color: lightsteelblue;">

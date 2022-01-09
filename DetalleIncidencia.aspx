@@ -106,7 +106,13 @@
                 <asp:Label ID="lbArchivo" runat="server" Text=""></asp:Label>
                 <asp:GridView ID="gridArchivos" runat="server" AutoGenerateColumns="False" CssClass="simple">
                     <Columns>
+                        <asp:BoundField DataField="id_archivo" HeaderText="ID" />
                         <asp:HyperLinkField DataNavigateUrlFields="nombre" DataNavigateUrlFormatString="~/Files/{0}" DataTextField="nombre" HeaderText="Archivos:" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnbt_delete" runat="server" OnClick="EliminarArchivo" OnClientClick="return confirm('¿Eliminar archivo?');">Delete</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
