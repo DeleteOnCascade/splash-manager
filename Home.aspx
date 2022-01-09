@@ -13,7 +13,7 @@
             <img src="Resources/Images/SplashBT_Logo.png" alt="Splash Logo"/>
             <div class="extender" style="float:right; text-align:right">
                 <asp:Label ID="lbUsername" runat="server" Text=""></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="btLogout" runat="server" Text="SALIR" OnClick="Salir" />
             </div>
         </div>
@@ -36,7 +36,7 @@
                 </table>
             </asp:Panel>
         </div>
-        <br /><br />
+        <br />
 
         <div class="extender" style="border:1px solid; padding-left:10px; margin-right:20px; background-color: #c8c8e8;">
                 <h4>Filtrar: </h4>
@@ -78,7 +78,7 @@
                         <asp:Button runat="server" Text="Reiniciar" OnClick="ReiniciarFiltro"/>
                     </asp:Panel>
                 </div>
-               <br /><br />
+               <br /> <br />
             </div>
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -90,18 +90,12 @@
                         <asp:Label runat="server" Text="" ID="lbNumIncidencias" Font-Bold="True"></asp:Label>
                     </asp:Panel>
                 </div>
-                <div class="" style="width:fit-content; text-align:right; float:right; margin-top:0.2%">
-                    <asp:Button ID="btPrimero" runat="server" Text="<<" OnClick="VerPrimera"/>&nbsp;
-                    <asp:Button ID="btAtras" runat="server" Text="<" OnClick="VerAnterior"/>&nbsp;
-                    <asp:Button ID="btSiguiente" runat="server" Text=">" OnClick="VerSiguiente"/>&nbsp;
-                    <asp:Button ID="btUltimo" runat="server" Text=">>" OnClick="VerUltima"/>
-                </div>
                <br />
             </div>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <div class="extender" style="border:1px solid">
-            <asp:ListView ID="listIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
+            <asp:ListView ID="listIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder" OnPagePropertiesChanging="listIncidencias_PagePropertiesChanging">
                 <LayoutTemplate>
                     <table class="extender">
                         <tr style="background-color: lightsteelblue;">
@@ -113,6 +107,17 @@
                             <th>&nbsp;Resumen</th>
                         </tr>
                         <tr id="groupHolder" runat="server"></tr>
+                        <tr>
+                            <td colspan="6" style="text-align:center;">
+                                <asp:DataPager ID="dataPagerIncidencias" runat="server" PagedControlID="listIncidencias" PageSize="19">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowPreviousPageButton="true" ShowNextPageButton="false" />
+                                        <asp:NumericPagerField ButtonType="Button" />
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowNextPageButton="true" ShowLastPageButton="true" ShowPreviousPageButton="false" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
+                        </tr>
                     </table>
                 </LayoutTemplate>
                 <GroupTemplate>

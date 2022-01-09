@@ -39,7 +39,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <h4>&nbsp;Mis Incidencias: </h4>
             <div class="extender" style="border:1px solid">
-                <asp:ListView ID="listViewIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder">
+                <asp:ListView ID="listViewIncidencias" runat="server" GroupPlaceholderID="groupHolder" ItemPlaceholderID="itemHolder" OnPagePropertiesChanging="listIncidencias_PagePropertiesChanging">
                     <LayoutTemplate>
                         <table class="extender">
                             <tr style="background-color: lightsteelblue; margin-right:auto; width: fit-content;">
@@ -51,6 +51,17 @@
                                 <th>&nbsp;Resumen</th>
                             </tr>
                             <tr id="groupHolder" runat="server"></tr>
+                            <tr>
+                            <td colspan="6" style="text-align:center;">
+                                <asp:DataPager ID="dataPagerIncidencias" runat="server" PagedControlID="listViewIncidencias" PageSize="10">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowPreviousPageButton="true" ShowNextPageButton="false" />
+                                        <asp:NumericPagerField ButtonType="Button" />
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowNextPageButton="true" ShowLastPageButton="true" ShowPreviousPageButton="false" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
+                        </tr>
                         </table>
                     </LayoutTemplate>
                     <GroupTemplate>

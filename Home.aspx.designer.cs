@@ -132,42 +132,6 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Label lbNumIncidencias;
 
         /// <summary>
-        /// btPrimero control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btPrimero;
-
-        /// <summary>
-        /// btAtras control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAtras;
-
-        /// <summary>
-        /// btSiguiente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSiguiente;
-
-        /// <summary>
-        /// btUltimo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUltimo;
-
-        /// <summary>
         /// listIncidencias control.
         /// </summary>
         /// <remarks>

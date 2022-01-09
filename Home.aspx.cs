@@ -41,7 +41,7 @@ namespace ProyectoFinalDAM
         {
             MySqlConnection conc = con.Conectar();
             command = new MySqlCommand("SELECT id_incidencia, categoria, prioridad, estado, responsable, fch_actualizacion, motivo  FROM incidencia " +
-                "WHERE estado != 'cerrada' ORDER BY fch_actualizacion DESC LIMIT 20", conc);
+                "WHERE estado != 'cerrada' ORDER BY fch_actualizacion DESC", conc);
             command.ExecuteNonQuery();
             dt = new DataTable();
             da = new MySqlDataAdapter(command);
@@ -129,29 +129,15 @@ namespace ProyectoFinalDAM
             MySqlConnection conc = con.Conectar();
             command = new MySqlCommand("SELECT COUNT(*) As Count FROM incidencia", conc);
             object o = command.ExecuteScalar();
-            lbNumIncidencias.Text = "(1 - 20 / " + o.ToString() + ")";
+            lbNumIncidencias.Text = "(Total: " + o.ToString() + ")";
             command.Dispose();
             conc.Close();
         }
 
-        protected void VerPrimera(object sender, EventArgs e)
+        protected void listIncidencias_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         {
-
-        }
-
-        protected void VerAnterior(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void VerSiguiente(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void VerUltima(object sender, EventArgs e)
-        {
-
+            (listIncidencias.FindControl("dataPagerIncidencias") as DataPager).SetPageProperties(e.StartRowIndex,e.MaximumRows,false);
+            this.getListView();
         }
 
         protected void Salir(object sender, EventArgs e)

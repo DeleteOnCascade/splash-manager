@@ -44,6 +44,12 @@ namespace ProyectoFinalDAM
             conc.Close();
         }
 
+        protected void listIncidencias_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            (listViewIncidencias.FindControl("dataPagerIncidencias") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            this.getListView();
+        }
+
         protected void Salir(object sender, EventArgs e)
         {
             Session.Abandon();
