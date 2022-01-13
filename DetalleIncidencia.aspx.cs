@@ -50,7 +50,7 @@ namespace ProyectoFinalDAM
             da.Fill(dt);
 
             tbMotivo.Text = dt.Rows[0][1].ToString();
-            tbDescripcion.Text = dt.Rows[0][2].ToString();
+            tbDescripcion.Text = dt.Rows[0][2].ToString().Replace(Environment.NewLine, "<br/>");
             lbCategoria.Text = "Categoría: " + dt.Rows[0][3].ToString();
             lbPrioridad.Text = "Prioridad: " + dt.Rows[0][4].ToString();
             lbEstado.Text = "Estado: " + dt.Rows[0][5].ToString();
@@ -366,10 +366,12 @@ namespace ProyectoFinalDAM
             cmd.Parameters.AddWithValue("@id_archivo", id_archivo);
             cmd.ExecuteNonQuery();
 
-            string path = Server.MapPath("~/Files/"+lb_IdIncidencia.Text+nombre);
+            string path = Server.MapPath("~/Files/"+lb_IdIncidencia.Text+"/"+nombre);
+            MessageBox.Show(path);
             FileInfo file = new FileInfo(path);
             if (file.Exists) 
             {
+                MessageBox.Show(path);
                 file.Delete();
             }
 

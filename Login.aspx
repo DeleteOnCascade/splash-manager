@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Panel ID="Panel1" runat="server" Height="270px" style="margin-left: auto; margin-right:auto; background-color: #FFFFCC; border: thin double #808080" Width="450px" >
+            <asp:Panel ID="Panel1" runat="server" Height="270px" style="margin-left: auto; margin-right:auto;
+                    background-color: #FFFFCC; border: thin double #808080" Width="450px" >
                 <br />
                 <div style="width:fit-content">
                     &nbsp;<img src="Resources/Images/SplashBT_Logo.png" alt="Splash Logo" style="margin-left:100px;"/></div>
