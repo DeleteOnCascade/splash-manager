@@ -68,6 +68,7 @@ namespace ProyectoFinalDAM
                         {
                             MessageBox.Show("NOTA BORRADA");
                             InsertaEnHistorial(1);
+                            ActualizaFchIncidencia();
                         }
                             
                         else
@@ -102,6 +103,7 @@ namespace ProyectoFinalDAM
                 {
                     MessageBox.Show("Nota editada.");
                     InsertaEnHistorial(0);
+                    ActualizaFchIncidencia();
                 }
                 else
                     MessageBox.Show("Error al actualizar.");
@@ -113,6 +115,11 @@ namespace ProyectoFinalDAM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        protected void Volver(object sender, EventArgs e)
+        {
+            Response.Redirect("DetalleIncidencia.aspx?id="+lb_id_incidencia.Text.Substring(12));
         }
 
         private void InsertaEnHistorial(int opcion)
@@ -141,6 +148,18 @@ namespace ProyectoFinalDAM
             cmd.Parameters.AddWithValue("@usuario", Session["username"]);
             cmd.Parameters.AddWithValue("@campo", campo);
             cmd.Parameters.AddWithValue("@cambio", cambio);
+            cmd.Parameters.AddWithValue("@id_incidencia", lb_id_incidencia.Text.Substring(12));
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conn.Close();
+        }
+
+        protected void ActualizaFchIncidencia()
+        {
+            string query = "UPDATE incidencia SET fch_actualizacion = @fch_actualizacion WHERE id_incidencia = @id_incidencia";
+            MySqlConnection conn = con.Conectar();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@fch_actualizacion", DateTime.Now);
             cmd.Parameters.AddWithValue("@id_incidencia", lb_id_incidencia.Text.Substring(12));
             cmd.ExecuteNonQuery();
             cmd.Dispose();

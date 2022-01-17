@@ -35,6 +35,7 @@ namespace ProyectoFinalDAM
             if (((int)Session["rol"] == 2))
             {
                 btAsignar.Enabled = false;
+                btEliminar.Enabled = false;
                 dropListAsignar.Enabled = false;
             }
         }
@@ -50,7 +51,7 @@ namespace ProyectoFinalDAM
             da.Fill(dt);
 
             tbMotivo.Text = dt.Rows[0][1].ToString();
-            tbDescripcion.Text = dt.Rows[0][2].ToString().Replace(Environment.NewLine, "<br/>");
+            tbDescripcion.Text = dt.Rows[0][2].ToString().Replace("\n", Environment.NewLine);
             lbCategoria.Text = "Categoría: " + dt.Rows[0][3].ToString();
             lbPrioridad.Text = "Prioridad: " + dt.Rows[0][4].ToString();
             lbEstado.Text = "Estado: " + dt.Rows[0][5].ToString();
@@ -280,7 +281,7 @@ namespace ProyectoFinalDAM
             string extension = "";
             int size = 0;
             int flag = 0;
-            int tamMax = 2000;
+            int tamMax = 2000000;
 
             if (fuArchivo.HasFile == true)
             {
@@ -375,7 +376,6 @@ namespace ProyectoFinalDAM
             cmd.ExecuteNonQuery();
 
             string path = Server.MapPath("~/Files/"+lb_IdIncidencia.Text+"/"+nombre);
-            MessageBox.Show(path);
             FileInfo file = new FileInfo(path);
             if (file.Exists) 
             {
@@ -412,11 +412,6 @@ namespace ProyectoFinalDAM
                 File.Delete(file);
             }
             Directory.Delete(path);
-        }
-
-        protected void EliminarNota(object sender, EventArgs e)
-        {
-            
         }
 
         protected void SalirLogout(object sender, EventArgs e)

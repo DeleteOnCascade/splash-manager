@@ -14,7 +14,8 @@ namespace ProyectoFinalDAM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"]==null)
+            Response.Redirect("Login.aspx");
         }
 
         Conexion con = new Conexion();
@@ -60,7 +61,6 @@ namespace ProyectoFinalDAM
                     lbError.Visible=true;
                 }
             }
-
         }
 
         protected int ObtenerID(MySqlConnection conn)

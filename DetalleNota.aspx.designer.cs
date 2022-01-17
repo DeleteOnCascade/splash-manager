@@ -51,33 +51,6 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Label lbIdNota;
 
         /// <summary>
-        /// lb_id_nota control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_id_nota;
-
-        /// <summary>
-        /// tbDescripcion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDescripcion;
-
-        /// <summary>
-        /// lb_fchCreacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_fchCreacion;
-
-        /// <summary>
         /// lbUsuario control.
         /// </summary>
         /// <remarks>
@@ -96,6 +69,33 @@ namespace ProyectoFinalDAM
         protected global::System.Web.UI.WebControls.Label lb_id_incidencia;
 
         /// <summary>
+        /// lb_fchCreacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_fchCreacion;
+
+        /// <summary>
+        /// lb_id_nota control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_id_nota;
+
+        /// <summary>
+        /// tbDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDescripcion;
+
+        /// <summary>
         /// btEditarNota control.
         /// </summary>
         /// <remarks>
@@ -112,5 +112,14 @@ namespace ProyectoFinalDAM
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btEliminarNota;
+
+        /// <summary>
+        /// btVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
     }
 }

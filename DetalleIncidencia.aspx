@@ -82,7 +82,7 @@
                         <th>
                             <asp:Label ID="lbDescripcion" runat="server" Text="&nbsp;Descripción: "></asp:Label></th>
                         <td>
-                            <asp:TextBox ID="tbDescripcion" runat="server" ReadOnly="True" TextMode="MultiLine" Enabled="False" Width="100%" Height="130px"/></td>
+                            <asp:TextBox ID="tbDescripcion" runat="server" ReadOnly="True" TextMode="MultiLine" Enabled="False" Width="100%" Height="130px" /></td>
                     </tr>
                 </table>
             </div>
@@ -127,10 +127,12 @@
                     <Columns>
                         <asp:BoundField DataField="id_archivo" HeaderText="ID" />
                         <asp:BoundField DataField="nombre" HeaderText="nombre" />
-                        <asp:HyperLinkField DataNavigateUrlFields="nombre,id_incidencia" DataNavigateUrlFormatString="~/Files/{1}/{0}" DataTextField="nombre" HeaderText="Acción:" DataTextFormatString="Descargar" />
+                        <asp:HyperLinkField DataNavigateUrlFields="nombre,id_incidencia" DataNavigateUrlFormatString="~/Files/{1}/{0}"
+                            DataTextField="nombre" HeaderText="Acción:" DataTextFormatString="Descargar" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnbt_delete" runat="server" OnClick="EliminarArchivo" OnClientClick="return confirm('¿Eliminar archivo?');">Borrar</asp:LinkButton>
+                                <asp:LinkButton ID="lnbt_delete" runat="server" OnClick="EliminarArchivo" 
+                                    OnClientClick="return confirm('¿Eliminar archivo?');">Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
