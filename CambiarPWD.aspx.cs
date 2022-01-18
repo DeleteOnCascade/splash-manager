@@ -15,7 +15,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
 
         Conexion con = new Conexion();
@@ -40,7 +40,7 @@ namespace ProyectoFinalDAM
                         if (n > 0)
                         {
                             conn.Close();
-                            MessageBox.Show("Contraseña actualizada correctamente");
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Archivo eliminado')", true);
                             Response.Redirect("~/UsuarioIncidencia.aspx");
                         }
                         else

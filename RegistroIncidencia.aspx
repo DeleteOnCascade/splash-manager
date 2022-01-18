@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/Style/EstiloGeneral.css"/>
+    <link rel="stylesheet" href="./Style/EstiloGeneral.css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,9 +21,9 @@
                         <tr><th></th></tr><tr></tr>
                         <tr>
                             <th>&nbsp;</th>
-                            <th><a href="/UsuarioIncidencia">Mis incidencias</a></th>
+                            <th><a href="./UsuarioIncidencia">Mis incidencias</a></th>
                             <th>| &nbsp;&nbsp;</th>
-                            <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
+                            <th><a href="./RegistroIncidencia">Reportar incidencia</a></th>
                             <th width ="1000"></th>
                             <th><asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
                             <th><asp:Button ID="btBuscar" runat="server" Text="Ir a" Width="116px" OnClick="BuscarIncidencia"/></th>

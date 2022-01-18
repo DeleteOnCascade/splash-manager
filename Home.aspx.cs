@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Configuration;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
-using System.IO;
-using System.Text;
 
 namespace ProyectoFinalDAM
 {
@@ -23,9 +15,9 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("./Login.aspx");
             if((int)Session["rol"] == 2)
-                Response.Redirect("UsuarioIncidencia.aspx");
+                Response.Redirect("./UsuarioIncidencia.aspx");
 
             lbUsername.Text = "Usuario: " + Session["username"];
 
@@ -121,7 +113,7 @@ namespace ProyectoFinalDAM
 
         protected void ReiniciarFiltro(object sender, EventArgs e)
         {
-            Response.Redirect("Home.aspx");
+            Response.Redirect("./Home.aspx");
         }
 
         protected void CargarNumIncidencias()
@@ -143,13 +135,13 @@ namespace ProyectoFinalDAM
         protected void Salir(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
             if (!tbIncidencia.Text.Equals(String.Empty))
-                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+                Response.Redirect("./DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
     }
 }

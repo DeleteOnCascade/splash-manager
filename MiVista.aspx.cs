@@ -1,13 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectoFinalDAM 
+namespace ProyectoFinalDAM
 {
     public partial class MiVista : System.Web.UI.Page
     {
@@ -19,7 +15,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("./Login.aspx");
             lbUsername.Text = "Usuario: " + Session["username"];
 
             if (!this.IsPostBack)
@@ -53,13 +49,13 @@ namespace ProyectoFinalDAM
         protected void Salir(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
             if (!tbIncidencia.Text.Equals(String.Empty))
-                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+                Response.Redirect("./DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
     }
 }

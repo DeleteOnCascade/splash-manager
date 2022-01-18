@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -14,7 +11,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("./Login.aspx");
         }
 
         Conexion con = new Conexion();
@@ -46,7 +43,6 @@ namespace ProyectoFinalDAM
                         if (n > 0)
                         {
                             conn.Close();
-                            MessageBox.Show("Usuario registrado correctamente");
                             Response.Redirect("~/Home.aspx");
                         }
                         else
