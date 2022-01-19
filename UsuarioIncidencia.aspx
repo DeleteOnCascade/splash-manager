@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/Style/EstiloGeneral.css" />
+    <link rel="stylesheet" href="./Style/EstiloGeneral.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,9 +28,9 @@
                         <tr></tr>
                         <tr>
                             <th>&nbsp;&nbsp;&nbsp;</th>
-                            <th><a href="/RegistroIncidencia">Reportar incidencia</a></th>
+                            <th><a href="./RegistroIncidencia">Reportar incidencia</a></th>
                             <th>| &nbsp;&nbsp;&nbsp;</th>
-                            <th><a href="/CambiarPWD">Cambiar contraseña</a></th>
+                            <th><a href="./CambiarPWD">Cambiar contraseña</a></th>
                             <th width="900"></th>
                             <th>
                                 <asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
@@ -77,7 +77,7 @@
                         </tr>
                     </GroupTemplate>
                     <ItemTemplate>
-                        <td class="<%# Eval("ESTADO")%>" style="text-align: center"><a href="/DetalleIncidencia.aspx?id=<%# Eval("ID_INCIDENCIA")%>"><%# Eval("ID_INCIDENCIA")%></a></td>
+                        <td class="<%# Eval("ESTADO")%>" style="text-align: center"><a href="./DetalleIncidencia.aspx?id=<%# Eval("ID_INCIDENCIA")%>"><%# Eval("ID_INCIDENCIA")%></a></td>
                         <td class="<%# Eval("ESTADO")%>" style="text-align: center"><%# Eval("CATEGORIA")%></td>
                         <td class="<%# Eval("ESTADO")%>" style="text-align: center"><%# Eval("PRIORIDAD")%></td>
                         <td class="<%# Eval("ESTADO")%>" style="text-align: center"><%# Eval("ESTADO")%> &nbsp; <small>(<%# Eval("RESPONSABLE")%>)</small></td>

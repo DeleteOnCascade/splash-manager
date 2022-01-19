@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/Style/EstiloGeneral.css" />
+    <link rel="stylesheet" href="./Style/EstiloGeneral.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -41,12 +41,13 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div>
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btEditarNota" runat="server" Text="Editar" OnClick="EditarNota" />
+            <asp:Button ID="btEditarNota" runat="server" Text="Editar" OnClick="EditarNota" OnClientClick="return confirm('¿Editar nota?');"/>
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btEliminarNota" runat="server" Text="Eliminar" OnClick="EliminarNota" />
+            <asp:Button ID="btEliminarNota" runat="server" Text="Eliminar" OnClick="EliminarNota" OnClientClick="return confirm('¿Eliminar nota?');"/>
             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="Volver" />
             &nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lbError" runat="server" Text="Error" Visible="False" ForeColor="Red"></asp:Label>
         </div>
     </form>
 </body>

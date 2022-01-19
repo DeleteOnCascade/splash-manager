@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
 
 namespace ProyectoFinalDAM
 {
@@ -20,7 +14,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("./Login.aspx");
             lbUsername.Text = "Usuario: " + Session["username"];
 
             if (!this.IsPostBack)
@@ -52,39 +46,28 @@ namespace ProyectoFinalDAM
 
         protected void EliminarNota(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("¿Borrar definitivamente esta nota? \n\t(¡no hay vuelta atrás!)", "Confirmación", MessageBoxButtons.YesNo);
-            switch (dr)
+            try
             {
-                case DialogResult.Yes:
-                    try
-                    {
-                        string query = "DELETE FROM nota WHERE id_nota = @id_nota";
-                        MySqlConnection conn = con.Conectar();
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@id_nota", lbIdNota.Text);
-                        int n = cmd.ExecuteNonQuery();
+                string query = "DELETE FROM nota WHERE id_nota = @id_nota";
+                MySqlConnection conn = con.Conectar();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id_nota", lbIdNota.Text);
+                int n = cmd.ExecuteNonQuery();
 
-                        if (n > 0)
-                        {
-                            MessageBox.Show("NOTA BORRADA");
-                            InsertaEnHistorial(1);
-                            ActualizaFchIncidencia();
-                        }
-                            
-                        else
-                            MessageBox.Show("NOTA NO BORRADA");
+                if (n > 0)
+                {
+                    InsertaEnHistorial(1);
+                    ActualizaFchIncidencia();
+                }
 
-                        cmd.Dispose();
-                        conn.Close();
-                        Response.Redirect("DetalleIncidencia.aspx?id="+lb_id_incidencia.Text.Substring(12));
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
-                case DialogResult.No:
-                    break;
+                cmd.Dispose();
+                conn.Close();
+                Response.Redirect("./DetalleIncidencia.aspx?id="+lb_id_incidencia.Text.Substring(12));
+            }
+            catch (Exception ex)
+            {
+                lbError.Text = ex.Message;
+                lbError.Visible=true;
             }
         }
 
@@ -101,25 +84,23 @@ namespace ProyectoFinalDAM
 
                 if (n > 0)
                 {
-                    MessageBox.Show("Nota editada.");
                     InsertaEnHistorial(0);
                     ActualizaFchIncidencia();
                 }
-                else
-                    MessageBox.Show("Error al actualizar.");
 
                 cmd.Dispose();
                 conn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                lbError.Text = ex.Message;
+                lbError.Visible=true;
             }
         }
 
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect("DetalleIncidencia.aspx?id="+lb_id_incidencia.Text.Substring(12));
+            Response.Redirect("./DetalleIncidencia.aspx?id="+lb_id_incidencia.Text.Substring(12));
         }
 
         private void InsertaEnHistorial(int opcion)
@@ -169,7 +150,7 @@ namespace ProyectoFinalDAM
         protected void SalirLogout(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
 
     }

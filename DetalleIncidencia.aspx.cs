@@ -22,7 +22,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("./Login.aspx");
             lbUsername.Text = "Usuario: " + Session["username"];
             if (!this.IsPostBack)
             {
@@ -86,51 +86,39 @@ namespace ProyectoFinalDAM
 
         protected void EliminarIncidencia(object sender, EventArgs e)
         {
-            
-                DialogResult dr = MessageBox.Show("¿Borrar definitivamente la incidencia? \n\t(¡no hay vuelta atrás!)","Confirmación", MessageBoxButtons.YesNo);
-                switch (dr)
-                {
-                    case DialogResult.Yes:
-                        try
-                        {
-                            MySqlConnection conn = con.Conectar();
-                            string query_historial = "DELETE FROM historial WHERE id_incidencia = @id_incidencia";
-                            string query_nota = "DELETE FROM nota WHERE id_incidencia = @id_incidencia";
-                            string query_incidencia = "DELETE FROM incidencia WHERE id_incidencia = @id_incidencia";
+            try
+            {
+                MySqlConnection conn = con.Conectar();
+                string query_historial = "DELETE FROM historial WHERE id_incidencia = @id_incidencia";
+                string query_nota = "DELETE FROM nota WHERE id_incidencia = @id_incidencia";
+                string query_incidencia = "DELETE FROM incidencia WHERE id_incidencia = @id_incidencia";
 
-                            MySqlCommand cmd_his = new MySqlCommand(query_historial, conn);
-                            MySqlCommand cmd_not = new MySqlCommand(query_nota, conn);
-                            MySqlCommand cmd_inc = new MySqlCommand(query_incidencia, conn);
+                MySqlCommand cmd_his = new MySqlCommand(query_historial, conn);
+                MySqlCommand cmd_not = new MySqlCommand(query_nota, conn);
+                MySqlCommand cmd_inc = new MySqlCommand(query_incidencia, conn);
 
-                            cmd_his.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
-                            cmd_not.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
-                            cmd_inc.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+                cmd_his.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+                cmd_not.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
+                cmd_inc.Parameters.AddWithValue("@id_incidencia", lb_IdIncidencia.Text);
 
-                            cmd_his.ExecuteNonQuery();
-                            cmd_not.ExecuteNonQuery();
-                            EliminarArchivosIncidencia();
+                cmd_his.ExecuteNonQuery();
+                cmd_not.ExecuteNonQuery();
+                EliminarArchivosIncidencia();
+                cmd_inc.ExecuteNonQuery();
 
-                            if (cmd_inc.ExecuteNonQuery() ==  1)
-                                MessageBox.Show("INCIDENCIA BORRADA");
-                            else
-                                MessageBox.Show("INCIDENCIA NO BORRADA");
+                cmd_his.Dispose();
+                cmd_not.Dispose();
+                cmd_inc.Dispose();
+                conn.Close();
 
-                            cmd_his.Dispose();
-                            cmd_not.Dispose();
-                            cmd_inc.Dispose();
-                            conn.Close();
-
-                            Response.Redirect("Home.aspx");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                Response.Redirect("./Home.aspx");
             }
+            catch (Exception ex)
+            {
+                lbError.Text = ex.Message;
+                lbError.Visible=true;
+            }
+        }
 
         protected void AgregarNota(object sender, EventArgs e)
         {
@@ -152,7 +140,7 @@ namespace ProyectoFinalDAM
 
             if (n>0)
             {
-                Response.Redirect("DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
+                Response.Redirect("./DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
                 cmd.Dispose();
                 conn.Close();
             }
@@ -172,7 +160,7 @@ namespace ProyectoFinalDAM
             InsertaEnHistorial(1);
             ActualizaFchIncidencia();
 
-            Response.Redirect("DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
+            Response.Redirect("./DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
             cmd.Dispose();
             conn.Close();
         }  
@@ -200,7 +188,7 @@ namespace ProyectoFinalDAM
             InsertaEnHistorial(2);
             ActualizaFchIncidencia();
 
-            Response.Redirect("DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
+            Response.Redirect("./DetalleIncidencia.aspx?id="+lb_IdIncidencia.Text);
             cmd.Dispose();
             conn.Close();
         }
@@ -316,35 +304,37 @@ namespace ProyectoFinalDAM
                         int n = cmd.ExecuteNonQuery();
                         if (n > 0)
                         {
-                            MessageBox.Show("Archivo subido correctamente");
                             cmd.Dispose();
                             conn.Close();
                         }
                         else
                         {
-                            MessageBox.Show("No se ha podido subir el archivo");
+                            lbError.Text = "No se ha podido subir el archivo";
+                            lbError.Visible=true;
                         }
                         Directory.CreateDirectory(MapPath("~/Files/"+lb_IdIncidencia.Text));
                         fuArchivo.SaveAs(Server.MapPath("~/Files/"+lb_IdIncidencia.Text+"/"+nombre+extension));
                         ActualizaFchIncidencia();
                         InsertaEnHistorial(3);
-                        Response.Redirect("DetalleIncidencia.aspx?id=" + lb_IdIncidencia.Text);
+                        Response.Redirect("./DetalleIncidencia.aspx?id=" + lb_IdIncidencia.Text);
                     }
                     else
                     {
-                        MessageBox.Show("Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt");
+                        lbError.Text = "Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt";
+                        lbError.Visible=true;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Tamaño máximo superado");
+                    lbError.Text = "Tamaño máximo superado";
+                    lbError.Visible=true;
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione un archivo primero");
+                lbError.Text = "Seleccione un archivo primero";
+                lbError.Visible=true;
             }
-
         }
 
         protected void CargarArchivos()
@@ -379,7 +369,6 @@ namespace ProyectoFinalDAM
             FileInfo file = new FileInfo(path);
             if (file.Exists) 
             {
-                MessageBox.Show(path);
                 file.Delete();
             }
 
@@ -407,24 +396,27 @@ namespace ProyectoFinalDAM
         private void BorrarDirectorio(string path)
         {
             string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
-            foreach (string file in files)
+            if(files.Length > 0)
             {
-                File.Delete(file);
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+                Directory.Delete(path);
             }
-            Directory.Delete(path);
         }
 
         protected void SalirLogout(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
         }
 
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
             if (!tbIncidencia.Text.Equals(String.Empty))
             {
-                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+                Response.Redirect("./DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
             }
         }
 

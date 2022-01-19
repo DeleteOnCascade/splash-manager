@@ -16,7 +16,7 @@ namespace ProyectoFinalDAM
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"]==null)
-            Response.Redirect("Login.aspx");
+            Response.Redirect("./Login.aspx");
             lbUsername.Text = "Usuario: " + Session["username"];
         }
 
@@ -47,7 +47,7 @@ namespace ProyectoFinalDAM
 
                 if (n>0)
                 {
-                    Response.Redirect("UsuarioIncidencia.aspx");
+                    Response.Redirect("./UsuarioIncidencia.aspx");
                     command.Dispose();
                     conn.Close();
                 }
@@ -67,57 +67,70 @@ namespace ProyectoFinalDAM
             string extension = "";
             int size = 0;
             int flag = 0;
+            int tamMax = 2000000;
 
             if (fuArchivo.HasFile == true)
             {
                 nombre = Path.GetFileNameWithoutExtension(fuArchivo.FileName);
                 extension = Path.GetExtension(fuArchivo.FileName);
                 size = fuArchivo.PostedFile.ContentLength;
-                switch (extension.ToLower())
+                if (size > tamMax/1024)
                 {
-                    case ".doc":
-                    case ".docx":
-                    case ".pdf":
-                    case ".png":
-                    case ".jpg":
-                    case ".txt":
-                        flag = 1;
-                        break;
-                    default:
-                        flag= 0;
-                        break;
-                }
-                if (flag == 1)
-                {
-                    string query = "INSERT INTO archivo (id_archivo, nombre, id_incidencia) VALUES (id_archivo,@nombre,@id_incidencia)";
-                    MySqlConnection conn = con.Conectar();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nombre", nombre+extension);
-                    cmd.Parameters.AddWithValue("@id_incidencia", GetIncidencia());
-                    int n = cmd.ExecuteNonQuery();
-                    if (n > 0)
+                    switch (extension.ToLower())
                     {
-                        MessageBox.Show("Archivo subido correctamente");
-                        cmd.Dispose();
-                        conn.Close();
+                        case ".doc":
+                        case ".docx":
+                        case ".pdf":
+                        case ".png":
+                        case ".jpg":
+                        case ".txt":
+                            flag = 1;
+                            break;
+                        default:
+                            flag= 0;
+                            break;
+                    }
+                    if (flag == 1)
+                    {
+                        string query = "INSERT INTO archivo (id_archivo, nombre, id_incidencia) VALUES (id_archivo,@nombre,@id_incidencia)";
+
+                        MySqlConnection conn = con.Conectar();
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                        cmd.Parameters.AddWithValue("@nombre", nombre+extension);
+                        cmd.Parameters.AddWithValue("@id_incidencia", GetIncidencia());
+                        int n = cmd.ExecuteNonQuery();
+                        if (n > 0)
+                        {
+                            cmd.Dispose();
+                            conn.Close();
+                        }
+                        else
+                        {
+                            lbError.Text = "No se ha podido subir el archivo";
+                            lbError.Visible=true;
+                        }
+                        Directory.CreateDirectory(MapPath("~/Files/"+ GetIncidencia()));
+                        fuArchivo.SaveAs(Server.MapPath("~/Files/"+ GetIncidencia()+"/"+nombre+extension));
+                        Response.Redirect("./DetalleIncidencia.aspx?id=" +  GetIncidencia());
                     }
                     else
                     {
-                        MessageBox.Show("No se ha podido subir el archivo");
+                        lbError.Text = "Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt";
+                        lbError.Visible=true;
                     }
-                    Directory.CreateDirectory(MapPath("~/Files/"+GetIncidencia()));
-                    fuArchivo.SaveAs(Server.MapPath("~/Files/"+GetIncidencia()+"/"+nombre+extension));
                 }
                 else
                 {
-                    MessageBox.Show("Solo están permitidos los archivos .doc, .docx, .pdf, .png, .jpg, .txt");
+                    lbError.Text = "Tamaño máximo superado";
+                    lbError.Visible=true;
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione un archivo primero");
+                lbError.Text = "Seleccione un archivo primero";
+                lbError.Visible=true;
             }
-
         }
 
         protected int GetIncidencia()
@@ -149,7 +162,7 @@ namespace ProyectoFinalDAM
         protected void BuscarIncidencia(object sender, EventArgs e)
         {
             if (!tbIncidencia.Text.Equals(String.Empty))
-                Response.Redirect("DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
+                Response.Redirect("./DetalleIncidencia.aspx?id=" + tbIncidencia.Text);
         }
     
     }

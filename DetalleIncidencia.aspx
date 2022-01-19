@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/Style/EstiloGeneral.css" />
+    <link rel="stylesheet" href="./Style/EstiloGeneral.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
-                            <th><a href="/Home">Ver incidencias</a></th>
+                            <th><a href="./Home">Ver incidencias</a></th>
                             <th width="1200"></th>
                             <th>
                                 <asp:TextBox ID="tbIncidencia" runat="server" placeholder="Buscar..."></asp:TextBox></th>
@@ -107,12 +107,15 @@
                     &nbsp;
                     <asp:DropDownList ID="dropListAsignar" runat="server" SelectionMode="Single" />
                     &nbsp; &nbsp; &nbsp;
-                    <asp:Button ID="btEliminar" runat="server" Text="Eliminar Incidencia" OnClick="EliminarIncidencia" />
+                    <asp:Button ID="btEliminar" runat="server" Text="Eliminar Incidencia" OnClick="EliminarIncidencia" 
+                        OnClientClick="return confirm('¿Eliminar incidencia?');"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="lbUpload" runat="server" Text="&nbsp;Adjuntar archivo: "></asp:Label>
                     &nbsp;&nbsp;
                     <asp:FileUpload ID="fuArchivo" runat="server" />&nbsp;&nbsp;
                     <asp:Button ID="btSubirArchivo" runat="server" Text="Subir archivo" OnClick="SubirArchivo" />
+                    &nbsp;&nbsp;
+                    <asp:Label ID="lbError" runat="server" Text="Error" Visible="False" ForeColor="Red"></asp:Label>
                 </div>
                 <br />
                 <br />
@@ -160,7 +163,7 @@
                     <ItemTemplate>
                         <th>
                             <small>
-                                <a href="/DetalleNota.aspx?id=<%# Eval("ID_NOTA")%>"><%# Eval("ID_NOTA")%></a>&nbsp;
+                                <a href="./DetalleNota.aspx?id=<%# Eval("ID_NOTA")%>"><%# Eval("ID_NOTA")%></a>&nbsp;
                                 <%# Eval("USUARIO")%>&nbsp;&nbsp;
                                 <%# Eval("FCH_CREACION")%>
                             </small>
