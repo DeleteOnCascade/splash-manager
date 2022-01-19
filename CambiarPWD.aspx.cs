@@ -40,7 +40,6 @@ namespace ProyectoFinalDAM
                         if (n > 0)
                         {
                             conn.Close();
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Archivo eliminado')", true);
                             Response.Redirect("~/UsuarioIncidencia.aspx");
                         }
                         else
